@@ -2,7 +2,9 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const socketio = require("socket.io");
-
+const dotenv = require("dotenv");
+dotenv.config();
+const PORT = process.env.PORT || 8000;
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -36,7 +38,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-server.listen(8000, () => {
+server.listen(PORT, () => {
   console.log("Server is running on http://localhost:8000");
 });
 
